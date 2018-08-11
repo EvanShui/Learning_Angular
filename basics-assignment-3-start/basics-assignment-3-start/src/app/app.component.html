@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ol>
+        <li>Add A button which says 'Display Details'</li>
+        <li>Add a paragraph with any content of your choice (e.g. 'Secret Password = tuna')</li>
+        <li>Toggle the displaying of that paragraph with the button created in the first step</li>
+        <li>Log all button clicks in an array and output that array below the secret paragraph (maybe log a timestamp or simply an incrementing number)</li>
+        <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (ngClass)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+<!-- Anwer-->
+<button 
+  class="bt bt-primary"
+  (click)="showP = !showP"
+  (click)="onClick($event)">Display Details</button>
+<p *ngIf="showP === true">Secret Password</p>
+<!-- Old      
+ <button 
+  class="bt bt-primary"
+  (click)="showP === true ? showP=false : showP=true"
+  (click)="onClick($event)">Display Details</button>
+-->
+<!-- 
+  Why this won't work: 
+  These functions are all utilizing variables in the typescript file, so when
+  we execute these files, they won't reference the actual timestamp tuple in 
+  the array, thus the styling components will be applied to every element in 
+  the array
+<div 
+  *ngFor="let i of clickLog"
+  [ngStyle]="{backgroundColor: getColor()}"
+  [ngClass]="{white: counter>4}">    
+  timestamp: {{i}}
+</div>
+
+
+-->
+<div 
+  *ngFor="let i of clickLog"
+  [ngStyle]="{backgroundColor: i.count > 4 ? 'blue': 'transparent'}"
+  [ngClass]="{white: i.count > 4}">    
+  timestamp: {{i.timestamp}}
+  <p>timestamp count: {{i.count}}</p>
+</div>
+
