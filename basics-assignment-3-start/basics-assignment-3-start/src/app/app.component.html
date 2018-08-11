@@ -39,10 +39,10 @@
 
 -->
 <div 
-  *ngFor="let i of clickLog"
-  [ngStyle]="{backgroundColor: i.count > 4 ? 'blue': 'transparent'}"
-  [ngClass]="{white: i.count > 4}">    
-  timestamp: {{i.timestamp}}
-  <p>timestamp count: {{i.count}}</p>
+  *ngFor="let x of clickLog; let i = index"
+  [ngStyle]="{backgroundColor: i > 4 ? 'blue': 'transparent'}"
+  [ngClass]="{white: i > 4}">    
+  timestamp: {{x.timestamp}}
+  <p>timestamp count: {{x.count}}</p>
 </div>
 
